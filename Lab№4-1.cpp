@@ -1,9 +1,11 @@
 #include <iostream>
+#include <ctime>
 #include <math.h>
 using namespace std;
 int main()
 {
 	setlocale(LC_ALL, "Russian");
+	srand(time(0));
 	int *p = 0;
 	int size = 0;
 	int multiply = 1;
