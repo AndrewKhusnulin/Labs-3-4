@@ -1,8 +1,7 @@
-#include "stdafx.h"
-#include "math.h"
-#include "iostream"
+#include <math.h>
+#include <iostream>
 using namespace std;
-double summa()
+double sum()
 {
 	float e = 1e-4;
 	float result = 0;
@@ -12,7 +11,7 @@ double summa()
 	do
 	{
 		k++;
-		row = 1. / (5*k*k*k);
+		row = 1. / (5 * pow(k, 3));
 		result += sign*row;
 		sign *= -1;
 	} while (row >= e);
@@ -21,7 +20,6 @@ double summa()
 }
 int main()
 {
-	cout << summa() << endl;
-	system("pause");
-
+	cout << sum() << endl;
+	return(0);
 }
