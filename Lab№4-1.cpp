@@ -11,7 +11,7 @@ int main()
 	int multiply = 1;
 	cout << "Введите количество элементов массива: ";
 	cin >> size;
-	p = new int[size];
+	p = (int *)malloc(size * sizeof(int));
 	for (int i = 0; i<size; i++) {
 		p[i] = 1 + rand() % 100;
 		cout << " " << p[i];
@@ -23,4 +23,5 @@ int main()
 	cout << "Произведение элементов массива: " << multiply << endl;
 	free(p);
 	system("pause");
+	return(0);
 }
