@@ -1,33 +1,36 @@
 #include <iostream>
-#include <ctime>   
+#include <ctime> 
 #include <iomanip>
 using namespace std;
-
 int main()
 {
 	setlocale(LC_ALL, "Russian");
 	srand(time(0));
-	int n, m, sum;
-	n = 1+ rand() % 10;
-	m = 1+ rand() % 10;
+	int **p, n, m, sum,j,i;
+	
+	cout << "Введите количество строк: ";
+	cin >> n;
+	cout << "Введите количество столбцов: ";
+	cin >> m;
 	sum = 0;
-	float **Array = new float*[n];
+	p = (int **)malloc(n * sizeof(int *));
 	for (int i = 0; i < n; i++)
-		Array[i] = new float[m];
-	for (int k = 0; k < n; k++)
-		for (int c = 0; c < m; c++)
-			Array[k][c] = rand() % 100 + 1;
-	for (int k = 0; k < n; k++)
-	{
-		for (int c = 0; c < m; c++)
-			cout << setw(m) << Array[k][c] << "   ";
+		p[i] = (int *)malloc(m * sizeof(int));
+	for (int i = 0; i < n; i++)
+	{ 
+		for (int j = 0; j < m; j++)
+		{
+			p[i][j] = rand() % 100 + 1;
+			cout << setw(m) << p[i][j] << " ";
+		}
 		cout << endl;
 	}
-	for (int k = 0; k < n; k++)
-		for (int c = 0; c < m; c++)
-			sum += Array[k][c];
-	cout << "Сумма " << sum << endl;
-	for (int i = 0; i < n; i++)
-		delete[]Array[i];
+	for (i = 0; i < n; i++)
+	for (j = 0; j < m; j++)
+		sum += p[i][j];
+	cout << "Сумма:" << sum << endl;
+	for (i = 0; i < n; i++)
+		free(p[i]);
+	free(p);
 	system("pause");
 }
